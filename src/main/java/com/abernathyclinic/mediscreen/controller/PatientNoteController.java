@@ -13,7 +13,7 @@ import java.util.List;
 public class PatientNoteController {
 
     @Autowired
-    NoteFeignService noteFeignService;
+    private NoteFeignService noteFeignService;
 
     @CrossOrigin("http://localhost:4200")
     @GetMapping(value = "/patient-note/{patientId}")

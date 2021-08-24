@@ -11,7 +11,7 @@ import java.util.List;
 public class PatientController {
 
         @Autowired
-        PatientFeignService patientFeignService;
+        private PatientFeignService patientFeignService;
 
         @CrossOrigin("http://localhost:4200")
         @GetMapping("/")
