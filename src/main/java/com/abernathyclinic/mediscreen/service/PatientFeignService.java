@@ -22,7 +22,7 @@ public interface PatientFeignService {
     List<Patient> findAllPatients();
 
     @PostMapping(value = "/patient")
-    String savePatient(@RequestBody Patient patient);
+    Patient savePatient(@RequestBody Patient patient);
 
     @DeleteMapping(value = "/patient/{id}")
     Patient deletePatient(@PathVariable("id") int id);

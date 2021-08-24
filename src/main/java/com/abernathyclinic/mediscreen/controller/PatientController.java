@@ -39,7 +39,7 @@ public class PatientController {
 
         @CrossOrigin("http://localhost:4200")
         @PostMapping(value = "/patient")
-        public String savePatient(@RequestBody Patient patient){
+        public Patient savePatient(@RequestBody Patient patient){
                 return patientFeignService.savePatient(patient);
         };
 

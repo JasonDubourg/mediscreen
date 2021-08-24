@@ -51,6 +51,8 @@
 				<configuration>
 					<excludes>
 						<exclude>com/abernathyclinic/mediscreen/entity/**/*</exclude>
+						<exclude>com/abernathyclinic/mediscreen/service/**/*</exclude>
+						<exclude>com/abernathyclinic/mediscreen/**/MediscreenApplication.class</exclude>
 					</excludes>
 				</configuration>
 				<executions>

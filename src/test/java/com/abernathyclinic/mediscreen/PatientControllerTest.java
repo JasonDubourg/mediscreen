@@ -77,7 +77,7 @@ public class PatientControllerTest {
     void savePatientTest() throws Exception{
         // ARRANGE
         Patient patientToSave = new Patient("lastName", "firstName", "dateOfBirth", "gender", "homeAddress", "phoneNumber");
-        when(patientFeignService.savePatient(patientToSave)).thenReturn(any(String.class));
+        when(patientFeignService.savePatient(patientToSave)).thenReturn(patientToSave);
         // ACT
         MvcResult mvcResult = mockMvc.perform(post("/patient").contentType(MediaType.APPLICATION_JSON).content("{\"lastName\": \"firstName\"}"))
                 .andDo(print()).andReturn();

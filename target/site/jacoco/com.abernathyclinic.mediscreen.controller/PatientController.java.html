@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mediscreen</a> &gt; <a href="index.source.html" class="el_package">com.abernathyclinic.mediscreen.controller</a> &gt; <span class="el_source">PatientController.java</span></div><h1>PatientController.java</h1><pre class="source lang-java linenums">package com.abernathyclinic.mediscreen.controller;
+
+import com.abernathyclinic.mediscreen.entity.Patient;
+import com.abernathyclinic.mediscreen.service.PatientFeignService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+<span class="fc" id="L11">public class PatientController {</span>
+
+        @Autowired
+        PatientFeignService patientFeignService;
+
+        @CrossOrigin(&quot;http://localhost:4200&quot;)
+        @GetMapping(&quot;/&quot;)
+        public String index(){
+<span class="nc" id="L19">                return patientFeignService.index();</span>
+        };
+
+        @CrossOrigin(&quot;http://localhost:4200&quot;)
+        @GetMapping(value = &quot;/patient-info/{id}&quot;)
+        public Patient findPatientById(@PathVariable(&quot;id&quot;) int id){
+<span class="fc" id="L25">                return patientFeignService.getPatientById(id);</span>
+        };
+
+        @CrossOrigin(&quot;http://localhost:4200&quot;)
+        @GetMapping(value = &quot;/patient&quot;)
+        public Patient findPatientByFirstNameAndLastName(@RequestParam(&quot;firstName&quot;) String firstName, @RequestParam(&quot;lastName&quot;) String lastName){
+<span class="fc" id="L31">                return patientFeignService.getPatient(firstName, lastName);</span>
+        };
+
+        @CrossOrigin(&quot;http://localhost:4200&quot;)
+        @GetMapping(value = &quot;/patients&quot;)
+        public List&lt;Patient&gt; findAllPatients(){
+<span class="fc" id="L37">                return patientFeignService.findAllPatients();</span>
+        };
+
+        @CrossOrigin(&quot;http://localhost:4200&quot;)
+        @PostMapping(value = &quot;/patient&quot;)
+        public Patient savePatient(@RequestBody Patient patient){
+<span class="fc" id="L43">                return patientFeignService.savePatient(patient);</span>
+        };
+
+        @CrossOrigin(&quot;http://localhost:4200&quot;)
+        @DeleteMapping(value = &quot;/patient/{id}&quot;)
+        public Patient deletePatient(@PathVariable(&quot;id&quot;) int id){
+<span class="fc" id="L49">                return patientFeignService.deletePatient(id);</span>
+        };
+
+        @CrossOrigin(&quot;http://localhost:4200&quot;)
+        @PutMapping(value = &quot;/patient/{id}&quot;)
+        public Patient updatePatient(@PathVariable(&quot;id&quot;) int id,  @RequestBody Patient patient){
+<span class="fc" id="L55">                return patientFeignService.updatePatient(id, patient);</span>
+        };
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
